@@ -38,6 +38,7 @@ export interface SidebarItem {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   icon: any;
   badge?: number;
+  group?: string;
 }
 
 export interface DashboardStat {
