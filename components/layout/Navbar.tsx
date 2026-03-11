@@ -94,7 +94,7 @@ export function Navbar({ title, onMenuClick }: NavbarProps) {
             {/* Avatar with primary ring */}
             <Avatar
               name={user?.name}
-              size="sm"
+              size="md"
               className="ring-2 ring-primary/25 ring-offset-1 ring-offset-card"
             />
 
