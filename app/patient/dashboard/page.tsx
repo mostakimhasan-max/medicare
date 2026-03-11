@@ -1,7 +1,7 @@
 import { CalendarDays, ClipboardList, CreditCard, FileText } from 'lucide-react';
 import { StatsCard } from '@/components/layout/StatsCard';
-import { Card, CardHeader, CardTitle } from '@/components/ui/Card';
-import { StatusBadge } from '@/components/ui/Badge';
+import { Card, CardHeader, CardTitle } from '@/components/ui/card';
+import { StatusBadge } from '@/components/ui/badge';
 import { formatDate, formatTime, formatCurrency } from '@/utils/formatters';
 import { MOCK_APPOINTMENTS, MOCK_PRESCRIPTIONS, MOCK_BILLS } from '@/utils/mock-data';
 
@@ -27,7 +27,7 @@ export default function PatientDashboard() {
 
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
         {/* Upcoming appointments */}
-        <Card padding="none">
+        <Card className="py-0 gap-0">
           <CardHeader className="px-5 pt-5 pb-3">
             <CardTitle>Upcoming Appointments</CardTitle>
             <a href="/patient/appointments" className="text-xs text-blue-600 hover:underline">View all</a>
@@ -59,7 +59,7 @@ export default function PatientDashboard() {
         </Card>
 
         {/* Recent prescriptions */}
-        <Card padding="none">
+        <Card className="py-0 gap-0">
           <CardHeader className="px-5 pt-5 pb-3">
             <CardTitle>My Prescriptions</CardTitle>
             <a href="/patient/prescriptions" className="text-xs text-blue-600 hover:underline">View all</a>
@@ -93,7 +93,7 @@ export default function PatientDashboard() {
 
       {/* Bills */}
       {myBills.length > 0 && (
-        <Card padding="none">
+        <Card className="py-0 gap-0">
           <CardHeader className="px-5 pt-5 pb-3">
             <CardTitle>Recent Bills</CardTitle>
             <a href="/patient/billing" className="text-xs text-blue-600 hover:underline">View all</a>
@@ -125,3 +125,5 @@ export default function PatientDashboard() {
     </div>
   );
 }
+
+

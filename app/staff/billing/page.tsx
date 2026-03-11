@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import { DataTable, Column } from '@/components/tables/DataTable';
-import { StatusBadge } from '@/components/ui/Badge';
-import { Button } from '@/components/ui/Button';
+import { StatusBadge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import { Bill } from '@/types';
 import { billingService } from '@/services/billing.service';
 import { formatDate, formatCurrency } from '@/utils/formatters';
@@ -59,3 +59,4 @@ export default function StaffBillingPage() {
     </div>
   );
 }
+

@@ -1,7 +1,9 @@
 'use client';
 
 import { AuthProvider } from './AuthProvider';
+import { ThemeProvider } from './ThemeProvider';
 import { NotificationToast } from '@/components/layout/NotificationToast';
+import { Toaster } from '@/components/ui/sonner';
 
 /**
  * Root client-side wrapper. Add any global providers here.
@@ -10,9 +12,19 @@ import { NotificationToast } from '@/components/layout/NotificationToast';
  */
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
-    <AuthProvider>
-      {children}
-      <NotificationToast />
-    </AuthProvider>
+    <ThemeProvider
+      attribute="class"
+      defaultTheme="system"
+      enableSystem
+      disableTransitionOnChange
+    >
+      <AuthProvider>
+        {children}
+        <NotificationToast />
+        <Toaster richColors closeButton />
+      </AuthProvider>
+    </ThemeProvider>
   );
 }
+
+

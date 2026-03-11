@@ -5,8 +5,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useState } from 'react';
 import { CheckCircle } from 'lucide-react';
-import { Card, CardTitle } from '@/components/ui/Card';
-import { Button } from '@/components/ui/Button';
+import { Card, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 import { patientService } from '@/services/patient.service';
 import { notify } from '@/store/notification.store';
 import { DEPARTMENTS, BLOOD_GROUPS } from '@/utils/constants';
@@ -154,9 +154,10 @@ export default function PatientRegistrationPage() {
 
         <div className="flex justify-end gap-3">
           <Button type="button" variant="outline" onClick={() => reset()}>Reset</Button>
-          <Button type="submit" isLoading={isSubmitting}>Register Patient</Button>
+          <Button type="submit" loading={isSubmitting}>Register Patient</Button>
         </div>
       </form>
     </div>
   );
 }
+

@@ -1,7 +1,7 @@
 'use client';
 
 import { useController, Control, FieldValues, Path } from 'react-hook-form';
-import { Input } from '@/components/ui/Input';
+import { Input } from '@/components/ui/input';
 import type { InputHTMLAttributes } from 'react';
 
 interface FormInputProps<T extends FieldValues>
@@ -40,3 +40,4 @@ export function FormInput<T extends FieldValues>({
     />
   );
 }
+

@@ -1,9 +1,9 @@
 'use client';
 
 import { MOCK_BILLS } from '@/utils/mock-data';
-import { StatusBadge } from '@/components/ui/Badge';
-import { Card } from '@/components/ui/Card';
-import { Button } from '@/components/ui/Button';
+import { StatusBadge } from '@/components/ui/badge';
+import { Card } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 import { formatDate, formatCurrency } from '@/utils/formatters';
 import { Download, CreditCard } from 'lucide-react';
 
@@ -63,4 +63,5 @@ export default function PatientBillingPage() {
     </div>
   );
 }
+
 

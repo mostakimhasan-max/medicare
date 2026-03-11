@@ -1,26 +1,218 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* ─── Dark mode via .dark class (next-themes) ────────────────────────────── */
+@custom-variant dark (&:is(.dark *));
 
+/* ─── Tailwind v4 theme — maps CSS vars to utility classes ───────────────── */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Colors */
+  --color-background:              var(--background);
+  --color-foreground:              var(--foreground);
+  --color-card:                    var(--card);
+  --color-card-foreground:         var(--card-foreground);
+  --color-popover:                 var(--popover);
+  --color-popover-foreground:      var(--popover-foreground);
+  --color-primary:                 var(--primary);
+  --color-primary-foreground:      var(--primary-foreground);
+  --color-secondary:               var(--secondary);
+  --color-secondary-foreground:    var(--secondary-foreground);
+  --color-muted:                   var(--muted);
+  --color-muted-foreground:        var(--muted-foreground);
+  --color-accent:                  var(--accent);
+  --color-accent-foreground:       var(--accent-foreground);
+  --color-destructive:             var(--destructive);
+  --color-destructive-foreground:  var(--destructive-foreground);
+  --color-success:                 var(--success);
+  --color-success-foreground:      var(--success-foreground);
+  --color-warning:                 var(--warning);
+  --color-warning-foreground:      var(--warning-foreground);
+  --color-border:                  var(--border);
+  --color-input:                   var(--input);
+  --color-ring:                    var(--ring);
+  --color-chart-1:                 var(--chart-1);
+  --color-chart-2:                 var(--chart-2);
+  --color-chart-3:                 var(--chart-3);
+  --color-chart-4:                 var(--chart-4);
+  --color-chart-5:                 var(--chart-5);
+  --color-sidebar:                 var(--sidebar);
+  --color-sidebar-foreground:      var(--sidebar-foreground);
+  --color-sidebar-primary:         var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent:          var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border:          var(--sidebar-border);
+  --color-sidebar-ring:            var(--sidebar-ring);
+
+  /* Fonts */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  /* Radius */
+  --radius-sm:  calc(var(--radius) - 4px);
+  --radius-md:  calc(var(--radius) - 2px);
+  --radius-lg:  var(--radius);
+  --radius-xl:  calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ─── Light mode ─────────────────────────────────────────────────────────── */
+:root {
+  color-scheme: light;
+
+  /* Base */
+  --radius: 0.5rem;
+
+  /* Backgrounds */
+  --background:              oklch(0.99 0 0);
+  --foreground:              oklch(0.15 0.015 252);
+
+  /* Cards / Popovers */
+  --card:                    oklch(1 0 0);
+  --card-foreground:         oklch(0.15 0.015 252);
+  --popover:                 oklch(1 0 0);
+  --popover-foreground:      oklch(0.15 0.015 252);
+
+  /* ── Primary — Medical Blue ── */
+  --primary:                 oklch(0.55 0.2 255);
+  --primary-foreground:      oklch(0.99 0 0);
+
+  /* Secondary — Soft blue-grey */
+  --secondary:               oklch(0.94 0.015 255);
+  --secondary-foreground:    oklch(0.3 0.04 255);
+
+  /* Muted */
+  --muted:                   oklch(0.96 0.006 255);
+  --muted-foreground:        oklch(0.52 0.025 255);
+
+  /* Accent — light sky */
+  --accent:                  oklch(0.93 0.03 255);
+  --accent-foreground:       oklch(0.25 0.05 255);
+
+  /* Destructive — Red */
+  --destructive:             oklch(0.57 0.24 27);
+  --destructive-foreground:  oklch(0.99 0 0);
+
+  /* Success — Green */
+  --success:                 oklch(0.56 0.17 152);
+  --success-foreground:      oklch(0.99 0 0);
+
+  /* Warning — Amber */
+  --warning:                 oklch(0.74 0.18 76);
+  --warning-foreground:      oklch(0.15 0 0);
+
+  /* Borders / Inputs */
+  --border:                  oklch(0.89 0.01 255);
+  --input:                   oklch(0.89 0.01 255);
+  --ring:                    oklch(0.55 0.2 255);
+
+  /* Charts */
+  --chart-1:                 oklch(0.55 0.2 255);
+  --chart-2:                 oklch(0.56 0.17 152);
+  --chart-3:                 oklch(0.74 0.18 76);
+  --chart-4:                 oklch(0.65 0.22 18);
+  --chart-5:                 oklch(0.63 0.27 304);
+
+  /* Sidebar */
+  --sidebar:                 oklch(0.18 0.03 255);
+  --sidebar-foreground:      oklch(0.92 0.015 255);
+  --sidebar-primary:         oklch(0.55 0.2 255);
+  --sidebar-primary-foreground: oklch(0.99 0 0);
+  --sidebar-accent:          oklch(0.26 0.04 255);
+  --sidebar-accent-foreground: oklch(0.92 0.015 255);
+  --sidebar-border:          oklch(0.30 0.04 255);
+  --sidebar-ring:            oklch(0.55 0.2 255);
+}
+
+/* ─── Dark mode ──────────────────────────────────────────────────────────── */
+.dark {
+  color-scheme: dark;
+
+  /* Backgrounds */
+  --background:              oklch(0.12 0.015 255);
+  --foreground:              oklch(0.95 0.01 255);
+
+  /* Cards / Popovers */
+  --card:                    oklch(0.17 0.02 255);
+  --card-foreground:         oklch(0.95 0.01 255);
+  --popover:                 oklch(0.17 0.02 255);
+  --popover-foreground:      oklch(0.95 0.01 255);
+
+  /* ── Primary — Brighter Medical Blue in dark ── */
+  --primary:                 oklch(0.65 0.22 255);
+  --primary-foreground:      oklch(0.1 0 0);
+
+  /* Secondary */
+  --secondary:               oklch(0.24 0.03 255);
+  --secondary-foreground:    oklch(0.93 0.01 255);
+
+  /* Muted */
+  --muted:                   oklch(0.22 0.025 255);
+  --muted-foreground:        oklch(0.62 0.02 255);
+
+  /* Accent */
+  --accent:                  oklch(0.27 0.04 255);
+  --accent-foreground:       oklch(0.93 0.01 255);
+
+  /* Destructive */
+  --destructive:             oklch(0.68 0.22 22);
+  --destructive-foreground:  oklch(0.99 0 0);
+
+  /* Success */
+  --success:                 oklch(0.62 0.17 152);
+  --success-foreground:      oklch(0.1 0 0);
+
+  /* Warning */
+  --warning:                 oklch(0.78 0.17 76);
+  --warning-foreground:      oklch(0.12 0 0);
+
+  /* Borders / Inputs */
+  --border:                  oklch(1 0 0 / 10%);
+  --input:                   oklch(1 0 0 / 15%);
+  --ring:                    oklch(0.65 0.22 255);
+
+  /* Charts */
+  --chart-1:                 oklch(0.65 0.22 255);
+  --chart-2:                 oklch(0.62 0.17 152);
+  --chart-3:                 oklch(0.78 0.17 76);
+  --chart-4:                 oklch(0.68 0.22 22);
+  --chart-5:                 oklch(0.68 0.27 304);
+
+  /* Sidebar */
+  --sidebar:                 oklch(0.14 0.02 255);
+  --sidebar-foreground:      oklch(0.92 0.015 255);
+  --sidebar-primary:         oklch(0.65 0.22 255);
+  --sidebar-primary-foreground: oklch(0.99 0 0);
+  --sidebar-accent:          oklch(0.22 0.03 255);
+  --sidebar-accent-foreground: oklch(0.92 0.015 255);
+  --sidebar-border:          oklch(1 0 0 / 8%);
+  --sidebar-ring:            oklch(0.65 0.22 255);
+}
+
+/* ─── Base layer ─────────────────────────────────────────────────────────── */
+@layer base {
+  * {
+    @apply border-border;
   }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+  }
+  ::selection {
+    @apply bg-primary/20 text-foreground;
+  }
+  :focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+  /* Scrollbar — light */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { @apply bg-muted; }
+  ::-webkit-scrollbar-thumb { @apply bg-muted-foreground/30 rounded-full; }
+  ::-webkit-scrollbar-thumb:hover { @apply bg-muted-foreground/50; }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}

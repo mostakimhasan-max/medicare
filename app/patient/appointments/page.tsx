@@ -3,10 +3,10 @@
 import { useState } from 'react';
 import { MOCK_APPOINTMENTS } from '@/utils/mock-data';
 import { DataTable, Column } from '@/components/tables/DataTable';
-import { StatusBadge } from '@/components/ui/Badge';
+import { StatusBadge } from '@/components/ui/badge';
 import { Appointment } from '@/types';
 import { formatDate, formatTime } from '@/utils/formatters';
-import { Button } from '@/components/ui/Button';
+import { Button } from '@/components/ui/button';
 import { Plus } from 'lucide-react';
 
 const myAppointments = MOCK_APPOINTMENTS.filter((a) => a.patientId === 'p1');
@@ -39,3 +39,4 @@ export default function PatientAppointmentsPage() {
     </div>
   );
 }
+

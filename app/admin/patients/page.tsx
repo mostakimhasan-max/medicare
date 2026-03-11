@@ -4,9 +4,9 @@ import { useState, useEffect } from 'react';
 import { Plus } from 'lucide-react';
 import { DataTable, Column } from '@/components/tables/DataTable';
 import { Pagination } from '@/components/tables/Pagination';
-import { StatusBadge } from '@/components/ui/Badge';
-import { Avatar } from '@/components/ui/Avatar';
-import { Button } from '@/components/ui/Button';
+import { StatusBadge } from '@/components/ui/badge';
+import { Avatar } from '@/components/ui/avatar';
+import { Button } from '@/components/ui/button';
 import { Patient } from '@/types';
 import { patientService } from '@/services/patient.service';
 import { usePagination } from '@/hooks/usePagination';
@@ -100,3 +100,4 @@ export default function AdminPatientsPage() {
     </div>
   );
 }
+

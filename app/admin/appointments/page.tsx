@@ -3,13 +3,13 @@
 import { useState, useEffect } from 'react';
 import { DataTable, Column } from '@/components/tables/DataTable';
 import { Pagination } from '@/components/tables/Pagination';
-import { StatusBadge } from '@/components/ui/Badge';
-import { Button } from '@/components/ui/Button';
+import { StatusBadge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import { Appointment } from '@/types';
 import { appointmentService } from '@/services/appointment.service';
 import { usePagination } from '@/hooks/usePagination';
 import { formatDate, formatTime } from '@/utils/formatters';
-import { Avatar } from '@/components/ui/Avatar';
+import { Avatar } from '@/components/ui/avatar';
 import { Plus } from 'lucide-react';
 
 const columns: Column<Appointment>[] = [
@@ -90,3 +90,4 @@ export default function AdminAppointmentsPage() {
     </div>
   );
 }
+

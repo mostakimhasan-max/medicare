@@ -3,8 +3,8 @@
 import { useState, useEffect } from 'react';
 import { DataTable, Column } from '@/components/tables/DataTable';
 import { Pagination } from '@/components/tables/Pagination';
-import { StatusBadge } from '@/components/ui/Badge';
-import { Button } from '@/components/ui/Button';
+import { StatusBadge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import { Bill } from '@/types';
 import { billingService } from '@/services/billing.service';
 import { usePagination } from '@/hooks/usePagination';
@@ -97,3 +97,4 @@ export default function AdminBillingPage() {
     </div>
   );
 }
+

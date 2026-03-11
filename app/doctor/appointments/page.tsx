@@ -2,9 +2,9 @@
 
 import { useState, useEffect } from 'react';
 import { DataTable, Column } from '@/components/tables/DataTable';
-import { StatusBadge } from '@/components/ui/Badge';
-import { Avatar } from '@/components/ui/Avatar';
-import { Button } from '@/components/ui/Button';
+import { StatusBadge } from '@/components/ui/badge';
+import { Avatar } from '@/components/ui/avatar';
+import { Button } from '@/components/ui/button';
 import { Appointment } from '@/types';
 import { appointmentService } from '@/services/appointment.service';
 import { formatDate, formatTime } from '@/utils/formatters';
@@ -99,3 +99,4 @@ export default function DoctorAppointmentsPage() {
     </div>
   );
 }
+

@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Menu, Bell, LogOut, User, ChevronDown } from 'lucide-react';
 import { cn } from '@/utils/cn';
-import { Avatar } from '@/components/ui/Avatar';
+import { Avatar } from '@/components/ui/avatar';
 import { useAuthStore } from '@/store/auth.store';
 import { authService } from '@/services/auth.service';
 import { ROLE_LABELS } from '@/utils/constants';
@@ -103,3 +103,4 @@ export function Navbar({ title, onMenuClick }: NavbarProps) {
     </header>
   );
 }
+

@@ -1,7 +1,8 @@
-export { Button } from './Button';
-export { Input } from './Input';
-export { Modal } from './Modal';
-export { Card, CardHeader, CardTitle } from './Card';
-export { Badge, StatusBadge } from './Badge';
-export { Avatar } from './Avatar';
-export { Spinner, PageSpinner } from './Spinner';
+export { Button } from './button';
+export { Input } from './input';
+export { Modal } from './modal';
+export { Card, CardHeader, CardTitle } from './card';
+export { Badge, StatusBadge } from './badge';
+export { Avatar } from './avatar';
+export { Spinner, PageSpinner } from './spinner';
+

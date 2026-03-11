@@ -76,3 +76,4 @@ export function Pagination({ page, totalPages, total, limit, onPageChange }: Pag
     </div>
   );
 }
+

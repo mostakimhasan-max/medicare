@@ -3,8 +3,8 @@
 import { useState } from 'react';
 import { MOCK_PATIENTS } from '@/utils/mock-data';
 import { DataTable, Column } from '@/components/tables/DataTable';
-import { StatusBadge } from '@/components/ui/Badge';
-import { Avatar } from '@/components/ui/Avatar';
+import { StatusBadge } from '@/components/ui/badge';
+import { Avatar } from '@/components/ui/avatar';
 import { Patient } from '@/types';
 import { formatDate, calculateAge } from '@/utils/formatters';
 
@@ -55,3 +55,4 @@ export default function DoctorPatientsPage() {
     </div>
   );
 }
+

@@ -7,9 +7,9 @@ import {
   TrendingUp,
 } from 'lucide-react';
 import { StatsCard } from '@/components/layout/StatsCard';
-import { Card, CardHeader, CardTitle } from '@/components/ui/Card';
-import { StatusBadge } from '@/components/ui/Badge';
-import { Avatar } from '@/components/ui/Avatar';
+import { Card, CardHeader, CardTitle } from '@/components/ui/card';
+import { StatusBadge } from '@/components/ui/badge';
+import { Avatar } from '@/components/ui/avatar';
 import { formatDate, formatTime, formatCurrency } from '@/utils/formatters';
 import { MOCK_APPOINTMENTS, MOCK_DOCTORS } from '@/utils/mock-data';
 
@@ -56,7 +56,7 @@ export default function AdminDashboard() {
       {/* Main content grid */}
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
         {/* Recent appointments (2/3 width) */}
-        <Card className="xl:col-span-2" padding="none">
+        <Card className="xl:col-span-2 py-0 gap-0">
           <CardHeader className="px-5 pt-5 pb-0 mb-0">
             <CardTitle>Recent Appointments</CardTitle>
             <a href="/admin/appointments" className="text-xs text-blue-600 hover:underline">
@@ -108,7 +108,7 @@ export default function AdminDashboard() {
         </Card>
 
         {/* Top doctors (1/3 width) */}
-        <Card padding="none">
+        <Card className="py-0 gap-0">
           <CardHeader className="px-5 pt-5 pb-0 mb-0">
             <CardTitle>Top Doctors</CardTitle>
             <TrendingUp size={16} className="text-slate-400" />
@@ -167,3 +167,5 @@ export default function AdminDashboard() {
     </div>
   );
 }
+
+

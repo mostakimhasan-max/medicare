@@ -3,8 +3,8 @@
 import { useState, useMemo } from 'react';
 import { ChevronUp, ChevronDown, ChevronsUpDown, Search } from 'lucide-react';
 import { cn } from '@/utils/cn';
-import { Input } from '@/components/ui/Input';
-import { Spinner } from '@/components/ui/Spinner';
+import { Input } from '@/components/ui/input';
+import { Spinner } from '@/components/ui/spinner';
 
 // ─── Column definition ────────────────────────────────────────────────────────
 
@@ -177,3 +177,4 @@ export function DataTable<T>({
     </div>
   );
 }
+

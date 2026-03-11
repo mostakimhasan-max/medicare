@@ -65,3 +65,4 @@ export function NotificationToast() {
     </div>
   );
 }
+

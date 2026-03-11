@@ -1,8 +1,8 @@
 import { Users, CalendarDays, CreditCard, Clock } from 'lucide-react';
 import { StatsCard } from '@/components/layout/StatsCard';
-import { Card, CardHeader, CardTitle } from '@/components/ui/Card';
-import { StatusBadge } from '@/components/ui/Badge';
-import { Avatar } from '@/components/ui/Avatar';
+import { Card, CardHeader, CardTitle } from '@/components/ui/card';
+import { StatusBadge } from '@/components/ui/badge';
+import { Avatar } from '@/components/ui/avatar';
 import { formatTime } from '@/utils/formatters';
 import { MOCK_APPOINTMENTS } from '@/utils/mock-data';
 
@@ -22,7 +22,7 @@ export default function StaffDashboard() {
 
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
         {/* Queue */}
-        <Card padding="none">
+        <Card className="py-0 gap-0">
           <CardHeader className="px-5 pt-5 pb-3">
             <CardTitle>Today's Queue</CardTitle>
             <span className="text-xs text-blue-600">{todaysAppts.length} waiting</span>
@@ -72,3 +72,5 @@ export default function StaffDashboard() {
     </div>
   );
 }
+
+

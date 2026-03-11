@@ -1,8 +1,8 @@
 import { CalendarDays, Users, ClipboardList, Clock } from 'lucide-react';
 import { StatsCard } from '@/components/layout/StatsCard';
-import { Card, CardHeader, CardTitle } from '@/components/ui/Card';
-import { StatusBadge } from '@/components/ui/Badge';
-import { Avatar } from '@/components/ui/Avatar';
+import { Card, CardHeader, CardTitle } from '@/components/ui/card';
+import { StatusBadge } from '@/components/ui/badge';
+import { Avatar } from '@/components/ui/avatar';
 import { formatTime } from '@/utils/formatters';
 import { MOCK_APPOINTMENTS, MOCK_PATIENTS } from '@/utils/mock-data';
 
@@ -24,7 +24,7 @@ export default function DoctorDashboard() {
 
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
         {/* Today's schedule */}
-        <Card className="xl:col-span-2" padding="none">
+        <Card className="xl:col-span-2 py-0 gap-0">
           <CardHeader className="px-5 pt-5 pb-3">
             <CardTitle>Today's Schedule</CardTitle>
             <a href="/doctor/appointments" className="text-xs text-blue-600 hover:underline">View all</a>
@@ -49,7 +49,7 @@ export default function DoctorDashboard() {
         </Card>
 
         {/* Recent patients */}
-        <Card padding="none">
+        <Card className="py-0 gap-0">
           <CardHeader className="px-5 pt-5 pb-3">
             <CardTitle>Recent Patients</CardTitle>
           </CardHeader>
@@ -70,3 +70,5 @@ export default function DoctorDashboard() {
     </div>
   );
 }
+
+

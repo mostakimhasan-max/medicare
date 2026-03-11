@@ -5,10 +5,10 @@ import { useForm, useFieldArray } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Plus, Trash2, ClipboardList } from 'lucide-react';
-import { Card, CardTitle } from '@/components/ui/Card';
-import { Button } from '@/components/ui/Button';
-import { StatusBadge } from '@/components/ui/Badge';
-import { Modal } from '@/components/ui/Modal';
+import { Card, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { StatusBadge } from '@/components/ui/badge';
+import { Modal } from '@/components/ui/modal';
 import { MOCK_PRESCRIPTIONS } from '@/utils/mock-data';
 import { Prescription } from '@/types';
 import { formatDate } from '@/utils/formatters';
@@ -121,7 +121,7 @@ export default function DoctorPrescriptionsPage() {
         footer={
           <>
             <Button variant="outline" onClick={() => setIsModalOpen(false)}>Cancel</Button>
-            <Button form="rx-form" type="submit" isLoading={isSubmitting}>Save Prescription</Button>
+            <Button form="rx-form" type="submit" loading={isSubmitting}>Save Prescription</Button>
           </>
         }
       >
@@ -203,3 +203,4 @@ export default function DoctorPrescriptionsPage() {
     </div>
   );
 }
+

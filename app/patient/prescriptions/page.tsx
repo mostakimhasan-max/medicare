@@ -1,9 +1,9 @@
 'use client';
 
 import { MOCK_PRESCRIPTIONS } from '@/utils/mock-data';
-import { StatusBadge } from '@/components/ui/Badge';
-import { Card, CardHeader, CardTitle } from '@/components/ui/Card';
-import { Avatar } from '@/components/ui/Avatar';
+import { StatusBadge } from '@/components/ui/badge';
+import { Card, CardHeader, CardTitle } from '@/components/ui/card';
+import { Avatar } from '@/components/ui/avatar';
 import { formatDate } from '@/utils/formatters';
 import { Pill, CalendarCheck } from 'lucide-react';
 
@@ -54,3 +54,4 @@ export default function PatientPrescriptionsPage() {
     </div>
   );
 }
+

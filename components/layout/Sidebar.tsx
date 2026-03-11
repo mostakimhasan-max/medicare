@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 import { X, Activity } from 'lucide-react';
 import { cn } from '@/utils/cn';
 import { SidebarItem } from '@/types';
-import { Avatar } from '@/components/ui/Avatar';
+import { Avatar } from '@/components/ui/avatar';
 import { useAuthStore } from '@/store/auth.store';
 
 interface SidebarProps {
@@ -115,3 +115,4 @@ export function Sidebar({ items, isOpen, onClose }: SidebarProps) {
     </>
   );
 }
+

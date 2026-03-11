@@ -40,3 +40,4 @@ export function DashboardLayout({
     </div>
   );
 }
+

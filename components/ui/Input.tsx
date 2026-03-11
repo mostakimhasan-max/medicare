@@ -1,7 +1,11 @@
-import { InputHTMLAttributes, forwardRef } from 'react';
-import { cn } from '@/utils/cn';
+import * as React from "react"
 
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+import { cn } from "@/lib/utils"
+
+const INPUT_BASE =
+  "h-9 w-full min-w-0 rounded-md border border-input bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none selection:bg-primary selection:text-primary-foreground file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm dark:bg-input/30 focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40"
+
+interface InputProps extends React.ComponentProps<"input"> {
   label?: string;
   error?: string;
   hint?: string;
@@ -10,58 +14,66 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   wrapperClassName?: string;
 }
 
-const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ className, label, error, hint, leftIcon, rightIcon, wrapperClassName, id, ...props }, ref) => {
-    const inputId = id ?? label?.toLowerCase().replace(/\s+/g, '-');
+function Input({
+  className,
+  type,
+  label,
+  error,
+  hint,
+  leftIcon,
+  rightIcon,
+  wrapperClassName,
+  id,
+  ...props
+}: InputProps) {
+  const inputEl = (
+    <input
+      type={type}
+      id={id}
+      data-slot="input"
+      className={cn(
+        INPUT_BASE,
+        leftIcon && "pl-9",
+        rightIcon && "pr-9",
+        error && "border-destructive focus-visible:ring-destructive/30",
+        className
+      )}
+      {...props}
+    />
+  );
 
-    return (
-      <div className={cn('flex flex-col gap-1', wrapperClassName)}>
-        {label && (
-          <label
-            htmlFor={inputId}
-            className="text-sm font-medium text-slate-700"
-          >
-            {label}
-            {props.required && <span className="ml-1 text-red-500">*</span>}
-          </label>
+  if (!label && !error && !hint && !leftIcon && !rightIcon) {
+    return inputEl;
+  }
+
+  return (
+    <div className={cn("space-y-1.5", wrapperClassName)}>
+      {label && (
+        <label
+          htmlFor={id}
+          className="text-sm font-medium leading-none text-foreground"
+        >
+          {label}
+        </label>
+      )}
+      <div className="relative">
+        {leftIcon && (
+          <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground [&_svg]:size-4">
+            {leftIcon}
+          </span>
         )}
-        <div className="relative">
-          {leftIcon && (
-            <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none text-slate-400">
-              {leftIcon}
-            </div>
-          )}
-          <input
-            ref={ref}
-            id={inputId}
-            className={cn(
-              'w-full h-9 rounded-lg border text-sm text-slate-900 bg-white',
-              'placeholder:text-slate-400',
-              'focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent',
-              'disabled:bg-slate-50 disabled:text-slate-400 disabled:cursor-not-allowed',
-              'transition-colors',
-              error
-                ? 'border-red-400 focus:ring-red-400'
-                : 'border-slate-300 hover:border-slate-400',
-              leftIcon ? 'pl-9' : 'pl-3',
-              rightIcon ? 'pr-9' : 'pr-3',
-              className,
-            )}
-            {...props}
-          />
-          {rightIcon && (
-            <div className="absolute inset-y-0 right-3 flex items-center pointer-events-none text-slate-400">
-              {rightIcon}
-            </div>
-          )}
-        </div>
-        {error && <p className="text-xs text-red-600">{error}</p>}
-        {hint && !error && <p className="text-xs text-slate-500">{hint}</p>}
+        {inputEl}
+        {rightIcon && (
+          <span className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground [&_svg]:size-4">
+            {rightIcon}
+          </span>
+        )}
       </div>
-    );
-  },
-);
+      {error && <p className="text-xs text-destructive">{error}</p>}
+      {hint && !error && <p className="text-xs text-muted-foreground">{hint}</p>}
+    </div>
+  );
+}
 
-Input.displayName = 'Input';
+export { Input }
 
-export { Input };
