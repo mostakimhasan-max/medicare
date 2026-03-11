@@ -8,6 +8,7 @@ import { Avatar } from '@/components/ui/avatar';
 import { useAuthStore } from '@/store/auth.store';
 import { authService } from '@/services/auth.service';
 import { ROLE_LABELS } from '@/utils/constants';
+import { ThemeToggle } from '@/components/ui/theme-toggle';
 
 interface NavbarProps {
   title: string;
@@ -31,23 +32,26 @@ export function Navbar({ title, onMenuClick }: NavbarProps) {
   };
 
   return (
-    <header className="flex items-center gap-4 bg-white border-b border-slate-200 px-4 h-14 flex-shrink-0">
+    <header className="flex items-center gap-4 bg-card border-b border-border px-4 h-14 flex-shrink-0">
       {/* Mobile menu toggle */}
       <button
         onClick={onMenuClick}
-        className="p-2 rounded-lg hover:bg-slate-100 text-slate-600 lg:hidden"
+        className="p-2 rounded-lg hover:bg-accent text-muted-foreground lg:hidden"
         aria-label="Toggle navigation"
       >
         <Menu size={20} />
       </button>
 
       {/* Page title */}
-      <h1 className="text-base font-semibold text-slate-800 flex-1 truncate">{title}</h1>
+      <h1 className="text-base font-semibold text-foreground flex-1 truncate">{title}</h1>
+
+      {/* Theme toggle */}
+      <ThemeToggle />
 
       {/* Notification bell */}
-      <button className="relative p-2 rounded-lg hover:bg-slate-100 text-slate-500">
+      <button className="relative p-2 rounded-lg hover:bg-accent text-muted-foreground">
         <Bell size={18} />
-        <span className="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border border-white" />
+        <span className="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-card" />
       </button>
 
       {/* Profile dropdown */}
@@ -56,41 +60,41 @@ export function Navbar({ title, onMenuClick }: NavbarProps) {
           onClick={() => setShowMenu((v) => !v)}
           className={cn(
             'flex items-center gap-2 pl-2 pr-2.5 py-1.5 rounded-lg',
-            'hover:bg-slate-100 transition-colors',
+            'hover:bg-accent transition-colors',
           )}
           aria-expanded={showMenu}
         >
           <Avatar name={user?.name} size="sm" />
           <div className="hidden sm:block text-left">
-            <p className="text-xs font-semibold text-slate-800 leading-tight">{user?.name}</p>
-            <p className="text-[10px] text-slate-500 leading-tight">
+            <p className="text-xs font-semibold text-foreground leading-tight">{user?.name}</p>
+            <p className="text-[10px] text-muted-foreground leading-tight">
               {user?.role ? ROLE_LABELS[user.role] : ''}
             </p>
           </div>
-          <ChevronDown size={14} className="text-slate-400" />
+          <ChevronDown size={14} className="text-muted-foreground" />
         </button>
 
         {/* Dropdown */}
         {showMenu && (
           <>
             <div className="fixed inset-0 z-10" onClick={() => setShowMenu(false)} />
-            <div className="absolute right-0 mt-2 w-52 bg-white rounded-xl shadow-lg border border-slate-200 z-20 overflow-hidden">
-              <div className="px-4 py-3 border-b border-slate-100">
-                <p className="text-sm font-semibold text-slate-900 truncate">{user?.name}</p>
-                <p className="text-xs text-slate-500 truncate">{user?.email}</p>
+            <div className="absolute right-0 mt-2 w-52 bg-popover rounded-xl shadow-lg border border-border z-20 overflow-hidden">
+              <div className="px-4 py-3 border-b border-border">
+                <p className="text-sm font-semibold text-popover-foreground truncate">{user?.name}</p>
+                <p className="text-xs text-muted-foreground truncate">{user?.email}</p>
               </div>
               <div className="p-1.5">
                 <button
-                  className="w-full flex items-center gap-3 px-3 py-2 text-sm text-slate-700 rounded-lg hover:bg-slate-50 transition-colors"
+                  className="w-full flex items-center gap-3 px-3 py-2 text-sm text-foreground rounded-lg hover:bg-accent transition-colors"
                   onClick={() => setShowMenu(false)}
                 >
-                  <User size={15} className="text-slate-400" />
+                  <User size={15} className="text-muted-foreground" />
                   My Profile
                 </button>
                 <button
                   onClick={handleLogout}
                   disabled={isLoggingOut}
-                  className="w-full flex items-center gap-3 px-3 py-2 text-sm text-red-600 rounded-lg hover:bg-red-50 transition-colors"
+                  className="w-full flex items-center gap-3 px-3 py-2 text-sm text-destructive rounded-lg hover:bg-destructive/10 transition-colors"
                 >
                   <LogOut size={15} />
                   {isLoggingOut ? 'Signing out…' : 'Sign Out'}

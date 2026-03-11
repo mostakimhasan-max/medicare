@@ -19,7 +19,7 @@ const columns: Column<Appointment>[] = [
   { key: 'department', header: 'Dept' },
   {
     key: 'date', header: 'Date & Time', sortable: true,
-    render: (r) => <div><p>{formatDate(r.date)}</p><p className="text-xs text-slate-400">{formatTime(r.time)}</p></div>,
+    render: (r) => <div><p>{formatDate(r.date)}</p><p className="text-xs text-muted-foreground">{formatTime(r.time)}</p></div>,
   },
   { key: 'type', header: 'Type', render: (r) => <span className="capitalize text-xs">{r.type.replace(/-/g, ' ')}</span> },
   { key: 'status', header: 'Status', render: (r) => <StatusBadge status={r.status} /> },

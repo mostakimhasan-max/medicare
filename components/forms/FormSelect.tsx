@@ -37,7 +37,7 @@ export function FormSelect<T extends FieldValues>({
   return (
     <div className="flex flex-col gap-1">
       {label && (
-        <label htmlFor={inputId} className="text-sm font-medium text-slate-700">
+        <label htmlFor={inputId} className="text-sm font-medium text-foreground">
           {label}
           {rest.required && <span className="ml-1 text-red-500">*</span>}
         </label>
@@ -46,12 +46,12 @@ export function FormSelect<T extends FieldValues>({
         {...field}
         id={inputId}
         className={cn(
-          'w-full h-9 rounded-lg border text-sm text-slate-900 bg-white px-3',
-          'focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent',
-          'disabled:bg-slate-50 disabled:cursor-not-allowed transition-colors',
+          'w-full h-9 rounded-lg border text-sm text-foreground bg-background px-3',
+          'focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent',
+          'disabled:bg-muted disabled:cursor-not-allowed transition-colors',
           error
             ? 'border-red-400 focus:ring-red-400'
-            : 'border-slate-300 hover:border-slate-400',
+            : 'border-input hover:border-ring',
           className,
         )}
         {...rest}

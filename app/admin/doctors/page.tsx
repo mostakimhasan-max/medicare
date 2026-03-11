@@ -22,8 +22,8 @@ const columns: Column<Doctor>[] = [
       <div className="flex items-center gap-3">
         <Avatar name={row.name} size="sm" />
         <div>
-          <p className="font-medium text-slate-800">{row.name}</p>
-          <p className="text-xs text-slate-500">{row.email}</p>
+          <p className="font-medium text-foreground">{row.name}</p>
+          <p className="text-xs text-muted-foreground">{row.email}</p>
         </div>
       </div>
     ),
@@ -34,8 +34,8 @@ const columns: Column<Doctor>[] = [
     sortable: true,
     render: (row) => (
       <div>
-        <p className="text-slate-700">{row.specialization}</p>
-        <p className="text-xs text-slate-400">{row.department}</p>
+        <p className="text-foreground">{row.specialization}</p>
+        <p className="text-xs text-muted-foreground">{row.department}</p>
       </div>
     ),
   },
@@ -60,7 +60,7 @@ const columns: Column<Doctor>[] = [
   {
     key: 'joiningDate',
     header: 'Joined',
-    render: (row) => <span className="text-slate-500 text-xs">{formatDate(row.joiningDate)}</span>,
+    render: (row) => <span className="text-muted-foreground text-xs">{formatDate(row.joiningDate)}</span>,
   },
 ];
 
@@ -88,13 +88,13 @@ export default function AdminDoctorsPage() {
   return (
     <div className="space-y-4">
       {/* Summary strip */}
-      <div className="flex items-center gap-3 p-4 bg-white rounded-xl border border-slate-100 shadow-sm">
-        <div className="w-10 h-10 bg-blue-50 rounded-xl flex items-center justify-center">
+      <div className="flex items-center gap-3 p-4 bg-card rounded-xl border border-border shadow-sm">
+        <div className="w-10 h-10 bg-blue-50 dark:bg-blue-950/50 rounded-xl flex items-center justify-center">
           <Stethoscope size={20} className="text-blue-600" />
         </div>
         <div>
-          <p className="font-semibold text-slate-900">{total} doctors registered</p>
-          <p className="text-xs text-slate-500">Across all departments</p>
+          <p className="font-semibold text-foreground">{total} doctors registered</p>
+          <p className="text-xs text-muted-foreground">Across all departments</p>
         </div>
       </div>
 

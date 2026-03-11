@@ -16,7 +16,7 @@ const columns: Column<Appointment>[] = [
   { key: 'department', header: 'Department' },
   {
     key: 'date', header: 'Date & Time', sortable: true,
-    render: (r) => <div><p>{formatDate(r.date)}</p><p className="text-xs text-slate-400">{formatTime(r.time)}</p></div>,
+    render: (r) => <div><p>{formatDate(r.date)}</p><p className="text-xs text-muted-foreground">{formatTime(r.time)}</p></div>,
   },
   { key: 'type', header: 'Type', render: (r) => <span className="capitalize text-xs">{r.type.replace(/-/g, ' ')}</span> },
   { key: 'room', header: 'Room', render: (r) => <span className="text-xs">{r.room ?? '—'}</span> },

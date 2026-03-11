@@ -69,7 +69,7 @@ export default function DoctorPrescriptionsPage() {
     <div className="space-y-4">
       {/* Header */}
       <div className="flex items-center justify-between">
-        <p className="text-sm text-slate-500">{prescriptions.length} total prescriptions</p>
+        <p className="text-sm text-muted-foreground">{prescriptions.length} total prescriptions</p>
         <Button leftIcon={<Plus size={15} />} onClick={() => setIsModalOpen(true)}>
           New Prescription
         </Button>
@@ -81,30 +81,30 @@ export default function DoctorPrescriptionsPage() {
           <Card key={rx.id} className="hover:shadow-md transition-shadow">
             <div className="flex items-start justify-between gap-4">
               <div className="flex items-start gap-3">
-                <div className="w-9 h-9 bg-violet-50 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5">
+                <div className="w-9 h-9 bg-violet-50 dark:bg-violet-950/50 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5">
                   <ClipboardList size={18} className="text-violet-600" />
                 </div>
                 <div>
                   <div className="flex items-center gap-2 flex-wrap">
-                    <h3 className="font-semibold text-slate-900">{rx.patientName}</h3>
+                    <h3 className="font-semibold text-foreground">{rx.patientName}</h3>
                     <StatusBadge status={rx.status} />
                   </div>
-                  <p className="text-sm text-slate-600 mt-0.5">{rx.diagnosis}</p>
-                  <p className="text-xs text-slate-400 mt-1">
+                  <p className="text-sm text-muted-foreground mt-0.5">{rx.diagnosis}</p>
+                  <p className="text-xs text-muted-foreground mt-1">
                     {formatDate(rx.date)}
                     {rx.followUpDate && ` · Follow-up: ${formatDate(rx.followUpDate)}`}
                   </p>
                 </div>
               </div>
               <div className="text-right flex-shrink-0">
-                <p className="text-xs text-slate-500">{rx.medications.length} medication{rx.medications.length !== 1 ? 's' : ''}</p>
+                <p className="text-xs text-muted-foreground">{rx.medications.length} medication{rx.medications.length !== 1 ? 's' : ''}</p>
               </div>
             </div>
-            <div className="mt-3 pt-3 border-t border-slate-50 flex flex-wrap gap-2">
+            <div className="mt-3 pt-3 border-t border-border/40 flex flex-wrap gap-2">
               {rx.medications.map((med, i) => (
-                <span key={i} className="inline-flex gap-1 items-center text-xs bg-slate-50 border border-slate-100 rounded-lg px-2 py-1">
-                  <span className="font-medium text-slate-700">{med.name}</span>
-                  <span className="text-slate-400">{med.dosage} · {med.frequency}</span>
+                <span key={i} className="inline-flex gap-1 items-center text-xs bg-muted/40 border border-border rounded-lg px-2 py-1">
+                  <span className="font-medium text-foreground">{med.name}</span>
+                  <span className="text-muted-foreground">{med.dosage} · {med.frequency}</span>
                 </span>
               ))}
             </div>
@@ -128,9 +128,9 @@ export default function DoctorPrescriptionsPage() {
         <form id="rx-form" onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div className="grid grid-cols-2 gap-4">
             <div className="flex flex-col gap-1">
-              <label className="text-sm font-medium text-slate-700">Patient <span className="text-red-500">*</span></label>
+              <label className="text-sm font-medium text-foreground">Patient <span className="text-red-500">*</span></label>
               <select {...register('patientId')}
-                className="h-9 rounded-lg border border-slate-300 text-sm px-3 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                className="h-9 rounded-lg border border-input bg-background text-foreground text-sm px-3 focus:outline-none focus:ring-2 focus:ring-ring">
                 <option value="">Select patient</option>
                 <option value="p1">John Smith</option>
                 <option value="p2">Maria Garcia</option>
@@ -139,29 +139,29 @@ export default function DoctorPrescriptionsPage() {
               {errors.patientId && <p className="text-xs text-red-600">{errors.patientId.message}</p>}
             </div>
             <div className="flex flex-col gap-1">
-              <label className="text-sm font-medium text-slate-700">Follow-up Date</label>
+              <label className="text-sm font-medium text-foreground">Follow-up Date</label>
               <input {...register('followUpDate')} type="date"
-                className="h-9 rounded-lg border border-slate-300 text-sm px-3 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                className="h-9 rounded-lg border border-input bg-background text-foreground text-sm px-3 focus:outline-none focus:ring-2 focus:ring-ring" />
             </div>
           </div>
 
           <div className="flex flex-col gap-1">
-            <label className="text-sm font-medium text-slate-700">Diagnosis <span className="text-red-500">*</span></label>
+            <label className="text-sm font-medium text-foreground">Diagnosis <span className="text-red-500">*</span></label>
             <input {...register('diagnosis')} placeholder="e.g. Hypertension"
-              className="h-9 rounded-lg border border-slate-300 text-sm px-3 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+              className="h-9 rounded-lg border border-input bg-background text-foreground text-sm px-3 focus:outline-none focus:ring-2 focus:ring-ring" />
             {errors.diagnosis && <p className="text-xs text-red-600">{errors.diagnosis.message}</p>}
           </div>
 
           <div className="flex flex-col gap-1">
-            <label className="text-sm font-medium text-slate-700">Symptoms (comma-separated)</label>
+            <label className="text-sm font-medium text-foreground">Symptoms (comma-separated)</label>
             <input {...register('symptoms')} placeholder="e.g. Headache, Fatigue, Nausea"
-              className="h-9 rounded-lg border border-slate-300 text-sm px-3 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+              className="h-9 rounded-lg border border-input bg-background text-foreground text-sm px-3 focus:outline-none focus:ring-2 focus:ring-ring" />
           </div>
 
           {/* Medications */}
           <div>
             <div className="flex items-center justify-between mb-2">
-              <label className="text-sm font-medium text-slate-700">Medications <span className="text-red-500">*</span></label>
+              <label className="text-sm font-medium text-foreground">Medications <span className="text-red-500">*</span></label>
               <Button type="button" variant="ghost" size="sm" leftIcon={<Plus size={13} />}
                 onClick={() => append({ name: '', dosage: '', frequency: '', duration: '' })}>
                 Add
@@ -169,18 +169,18 @@ export default function DoctorPrescriptionsPage() {
             </div>
             <div className="space-y-2">
               {fields.map((field, idx) => (
-                <div key={field.id} className="flex gap-2 items-start p-3 bg-slate-50 rounded-xl border border-slate-100">
+                <div key={field.id} className="flex gap-2 items-start p-3 bg-muted/40 rounded-xl border border-border">
                   <div className="grid grid-cols-2 gap-2 flex-1">
                     <input {...register(`medications.${idx}.name`)} placeholder="Drug name"
-                      className="h-8 rounded-lg border border-slate-200 text-xs px-2 focus:outline-none focus:ring-1 focus:ring-blue-400" />
+                      className="h-8 rounded-lg border border-border bg-background text-foreground text-xs px-2 focus:outline-none focus:ring-1 focus:ring-ring" />
                     <input {...register(`medications.${idx}.dosage`)} placeholder="Dosage"
-                      className="h-8 rounded-lg border border-slate-200 text-xs px-2 focus:outline-none focus:ring-1 focus:ring-blue-400" />
+                      className="h-8 rounded-lg border border-border bg-background text-foreground text-xs px-2 focus:outline-none focus:ring-1 focus:ring-ring" />
                     <input {...register(`medications.${idx}.frequency`)} placeholder="Frequency"
-                      className="h-8 rounded-lg border border-slate-200 text-xs px-2 focus:outline-none focus:ring-1 focus:ring-blue-400" />
+                      className="h-8 rounded-lg border border-border bg-background text-foreground text-xs px-2 focus:outline-none focus:ring-1 focus:ring-ring" />
                     <input {...register(`medications.${idx}.duration`)} placeholder="Duration"
-                      className="h-8 rounded-lg border border-slate-200 text-xs px-2 focus:outline-none focus:ring-1 focus:ring-blue-400" />
+                      className="h-8 rounded-lg border border-border bg-background text-foreground text-xs px-2 focus:outline-none focus:ring-1 focus:ring-ring" />
                     <input {...register(`medications.${idx}.instructions`)} placeholder="Instructions (optional)"
-                      className="h-8 col-span-2 rounded-lg border border-slate-200 text-xs px-2 focus:outline-none focus:ring-1 focus:ring-blue-400" />
+                      className="h-8 col-span-2 rounded-lg border border-border bg-background text-foreground text-xs px-2 focus:outline-none focus:ring-1 focus:ring-ring" />
                   </div>
                   {fields.length > 1 && (
                     <button type="button" onClick={() => remove(idx)}
@@ -194,9 +194,9 @@ export default function DoctorPrescriptionsPage() {
           </div>
 
           <div className="flex flex-col gap-1">
-            <label className="text-sm font-medium text-slate-700">Notes</label>
+            <label className="text-sm font-medium text-foreground">Notes</label>
             <textarea {...register('notes')} rows={2} placeholder="Additional notes…"
-              className="rounded-lg border border-slate-300 text-sm px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none" />
+              className="rounded-lg border border-input bg-background text-foreground text-sm px-3 py-2 focus:outline-none focus:ring-2 focus:ring-ring resize-none" />
           </div>
         </form>
       </Modal>

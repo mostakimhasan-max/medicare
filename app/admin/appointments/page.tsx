@@ -20,7 +20,7 @@ const columns: Column<Appointment>[] = [
     render: (row) => (
       <div className="flex items-center gap-2">
         <Avatar name={row.patientName} size="xs" />
-        <span className="font-medium text-slate-800">{row.patientName}</span>
+        <span className="font-medium text-foreground">{row.patientName}</span>
       </div>
     ),
   },
@@ -32,8 +32,8 @@ const columns: Column<Appointment>[] = [
     sortable: true,
     render: (row) => (
       <div>
-        <p className="text-sm text-slate-700">{formatDate(row.date)}</p>
-        <p className="text-xs text-slate-400">{formatTime(row.time)}</p>
+        <p className="text-sm text-foreground">{formatDate(row.date)}</p>
+        <p className="text-xs text-muted-foreground">{formatTime(row.time)}</p>
       </div>
     ),
   },
@@ -41,7 +41,7 @@ const columns: Column<Appointment>[] = [
     key: 'type',
     header: 'Type',
     render: (row) => (
-      <span className="text-slate-600 capitalize text-xs">{row.type.replace(/-/g, ' ')}</span>
+      <span className="text-muted-foreground capitalize text-xs">{row.type.replace(/-/g, ' ')}</span>
     ),
   },
   {

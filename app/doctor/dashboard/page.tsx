@@ -29,18 +29,18 @@ export default function DoctorDashboard() {
             <CardTitle>Today's Schedule</CardTitle>
             <a href="/doctor/appointments" className="text-xs text-blue-600 hover:underline">View all</a>
           </CardHeader>
-          <div className="divide-y divide-slate-50">
+          <div className="divide-y divide-border/40">
             {todaysAppointments.map((appt) => (
-              <div key={appt.id} className="flex items-center gap-4 px-5 py-3 hover:bg-slate-50">
+              <div key={appt.id} className="flex items-center gap-4 px-5 py-3 hover:bg-muted/40">
                 <div className="text-center w-12 flex-shrink-0">
-                  <p className="text-sm font-bold text-slate-900">{formatTime(appt.time)}</p>
-                  <p className="text-[10px] text-slate-400">{appt.duration}min</p>
+                  <p className="text-sm font-bold text-foreground">{formatTime(appt.time)}</p>
+                  <p className="text-[10px] text-muted-foreground">{appt.duration}min</p>
                 </div>
-                <div className="w-px h-8 bg-slate-100" />
+                <div className="w-px h-8 bg-muted" />
                 <Avatar name={appt.patientName} size="sm" />
                 <div className="flex-1 min-w-0">
-                  <p className="font-medium text-slate-800 text-sm truncate">{appt.patientName}</p>
-                  <p className="text-xs text-slate-500 capitalize">{appt.type.replace(/-/g, ' ')}</p>
+                  <p className="font-medium text-foreground text-sm truncate">{appt.patientName}</p>
+                  <p className="text-xs text-muted-foreground capitalize">{appt.type.replace(/-/g, ' ')}</p>
                 </div>
                 <StatusBadge status={appt.status} />
               </div>
@@ -58,8 +58,8 @@ export default function DoctorDashboard() {
               <div key={patient.id} className="flex items-center gap-3">
                 <Avatar name={patient.name} size="sm" />
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium text-slate-800 truncate">{patient.name}</p>
-                  <p className="text-xs text-slate-400">{patient.bloodGroup} · {patient.gender}</p>
+                  <p className="text-sm font-medium text-foreground truncate">{patient.name}</p>
+                  <p className="text-xs text-muted-foreground">{patient.bloodGroup} · {patient.gender}</p>
                 </div>
                 <StatusBadge status={patient.status} />
               </div>

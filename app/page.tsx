@@ -24,8 +24,8 @@ export default function Home() {
   }, [isAuthenticated, user, router]);
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-slate-50">
-      <div className="text-slate-400 text-sm">Redirecting…</div>
+    <div className="flex min-h-screen items-center justify-center bg-muted/40">
+      <div className="text-muted-foreground text-sm">Redirecting…</div>
     </div>
   );
 }

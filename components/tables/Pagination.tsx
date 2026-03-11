@@ -27,7 +27,7 @@ export function Pagination({ page, totalPages, total, limit, onPageChange }: Pag
 
   return (
     <div className="flex items-center justify-between px-1 py-2">
-      <p className="text-sm text-slate-500">
+      <p className="text-sm text-muted-foreground">
         Showing <span className="font-medium">{start}</span>–
         <span className="font-medium">{end}</span> of{' '}
         <span className="font-medium">{total}</span>
@@ -37,7 +37,7 @@ export function Pagination({ page, totalPages, total, limit, onPageChange }: Pag
         <button
           onClick={() => onPageChange(page - 1)}
           disabled={page === 1}
-          className="p-1.5 rounded-lg hover:bg-slate-100 disabled:opacity-40 disabled:cursor-not-allowed"
+          className="p-1.5 rounded-lg hover:bg-accent text-foreground disabled:opacity-40 disabled:cursor-not-allowed"
           aria-label="Previous page"
         >
           <ChevronLeft size={16} />
@@ -45,7 +45,7 @@ export function Pagination({ page, totalPages, total, limit, onPageChange }: Pag
 
         {pages.map((p, idx) =>
           p === '...' ? (
-            <span key={`ellipsis-${idx}`} className="px-2 text-slate-400 text-sm">
+            <span key={`ellipsis-${idx}`} className="px-2 text-muted-foreground text-sm">
               …
             </span>
           ) : (
@@ -55,8 +55,8 @@ export function Pagination({ page, totalPages, total, limit, onPageChange }: Pag
               className={cn(
                 'w-8 h-8 rounded-lg text-sm font-medium transition-colors',
                 page === p
-                  ? 'bg-blue-600 text-white'
-                  : 'text-slate-600 hover:bg-slate-100',
+                  ? 'bg-primary text-primary-foreground'
+                  : 'text-foreground hover:bg-accent',
               )}
             >
               {p}
@@ -67,7 +67,7 @@ export function Pagination({ page, totalPages, total, limit, onPageChange }: Pag
         <button
           onClick={() => onPageChange(page + 1)}
           disabled={page === totalPages}
-          className="p-1.5 rounded-lg hover:bg-slate-100 disabled:opacity-40 disabled:cursor-not-allowed"
+          className="p-1.5 rounded-lg hover:bg-accent text-foreground disabled:opacity-40 disabled:cursor-not-allowed"
           aria-label="Next page"
         >
           <ChevronRight size={16} />

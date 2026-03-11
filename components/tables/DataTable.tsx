@@ -84,11 +84,11 @@ export function DataTable<T>({
 
   const SortIcon = ({ col }: { col: Column<T> }) => {
     if (!col.sortable) return null;
-    if (sortKey !== col.key) return <ChevronsUpDown size={14} className="text-slate-400" />;
+    if (sortKey !== col.key) return <ChevronsUpDown size={14} className="text-muted-foreground" />;
     return sortDir === 'asc' ? (
-      <ChevronUp size={14} className="text-blue-600" />
+      <ChevronUp size={14} className="text-primary" />
     ) : (
-      <ChevronDown size={14} className="text-blue-600" />
+      <ChevronDown size={14} className="text-primary" />
     );
   };
 
@@ -112,17 +112,17 @@ export function DataTable<T>({
       )}
 
       {/* Table */}
-      <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white">
+      <div className="overflow-x-auto rounded-xl border border-border bg-card">
         <table className="min-w-full text-sm">
           <thead>
-            <tr className="border-b border-slate-100 bg-slate-50">
+            <tr className="border-b border-border bg-muted/50">
               {columns.map((col) => (
                 <th
                   key={String(col.key)}
                   style={col.width ? { width: col.width } : undefined}
                   className={cn(
-                    'px-4 py-3 text-left text-xs font-semibold text-slate-500 uppercase tracking-wide',
-                    col.sortable && 'cursor-pointer select-none hover:text-slate-700',
+                    'px-4 py-3 text-left text-xs font-semibold text-muted-foreground uppercase tracking-wide',
+                    col.sortable && 'cursor-pointer select-none hover:text-foreground',
                   )}
                   onClick={col.sortable ? () => handleSort(String(col.key)) : undefined}
                 >
@@ -145,7 +145,7 @@ export function DataTable<T>({
               <tr>
                 <td
                   colSpan={columns.length}
-                  className="py-16 text-center text-slate-400 text-sm"
+                  className="py-16 text-center text-muted-foreground text-sm"
                 >
                   {emptyMessage}
                 </td>
@@ -156,13 +156,13 @@ export function DataTable<T>({
                   key={keyExtractor(row)}
                   onClick={onRowClick ? () => onRowClick(row) : undefined}
                   className={cn(
-                    'border-b border-slate-50 last:border-0',
-                    'hover:bg-slate-50 transition-colors',
+                    'border-b border-border/40 last:border-0',
+                    'hover:bg-muted/40 transition-colors',
                     onRowClick && 'cursor-pointer',
                   )}
                 >
                   {columns.map((col) => (
-                    <td key={String(col.key)} className="px-4 py-3 text-slate-700">
+                    <td key={String(col.key)} className="px-4 py-3 text-foreground">
                       {col.render
                         ? col.render(row)
                         : String((row as Record<string, unknown>)[col.key as string] ?? '—')}

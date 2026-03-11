@@ -60,21 +60,21 @@ export default function PatientProfilePage() {
         <div className="p-5 flex items-center gap-4">
           <Avatar name={me.name} size="lg" />
           <div className="flex-1 min-w-0">
-            <h2 className="font-bold text-slate-800 text-lg">{me.name}</h2>
-            <p className="text-sm text-slate-400">Patient ID: {me.id.toUpperCase()}</p>
-            <p className="text-sm text-slate-400">Registered: {formatDate(me.registrationDate)}</p>
+            <h2 className="font-bold text-foreground text-lg">{me.name}</h2>
+            <p className="text-sm text-muted-foreground">Patient ID: {me.id.toUpperCase()}</p>
+            <p className="text-sm text-muted-foreground">Registered: {formatDate(me.registrationDate)}</p>
           </div>
           <StatusBadge status={me.status} />
         </div>
-        <div className="px-5 pb-4 grid grid-cols-2 gap-3 text-sm border-t border-slate-100 pt-3">
-          <div><span className="text-slate-400">DOB:</span> <span className="font-medium">{formatDate(me.dateOfBirth)}</span></div>
-          <div><span className="text-slate-400">Gender:</span> <span className="font-medium capitalize">{me.gender}</span></div>
-          <div><span className="text-slate-400">Blood Group:</span> <span className="font-medium">{me.bloodGroup}</span></div>
-          <div><span className="text-slate-400">Assigned Doctor:</span> <span className="font-medium">{me.assignedDoctorName ?? '—'}</span></div>
+        <div className="px-5 pb-4 grid grid-cols-2 gap-3 text-sm border-t border-border pt-3">
+          <div><span className="text-muted-foreground">DOB:</span> <span className="font-medium">{formatDate(me.dateOfBirth)}</span></div>
+          <div><span className="text-muted-foreground">Gender:</span> <span className="font-medium capitalize">{me.gender}</span></div>
+          <div><span className="text-muted-foreground">Blood Group:</span> <span className="font-medium">{me.bloodGroup}</span></div>
+          <div><span className="text-muted-foreground">Assigned Doctor:</span> <span className="font-medium">{me.assignedDoctorName ?? '—'}</span></div>
           {me.insuranceProvider && (
             <>
-              <div><span className="text-slate-400">Insurance:</span> <span className="font-medium">{me.insuranceProvider}</span></div>
-              <div><span className="text-slate-400">Policy #:</span> <span className="font-medium">{me.insuranceNumber}</span></div>
+              <div><span className="text-muted-foreground">Insurance:</span> <span className="font-medium">{me.insuranceProvider}</span></div>
+              <div><span className="text-muted-foreground">Policy #:</span> <span className="font-medium">{me.insuranceNumber}</span></div>
             </>
           )}
         </div>
@@ -93,7 +93,7 @@ export default function PatientProfilePage() {
           </div>
         </CardHeader>
         {saved && (
-          <div className="mx-4 mb-2 rounded-md bg-green-50 px-3 py-2 text-sm text-green-700">
+          <div className="mx-4 mb-2 rounded-md bg-green-50 dark:bg-green-950/50 px-3 py-2 text-sm text-green-700 dark:text-green-300">
             Profile updated successfully.
           </div>
         )}
@@ -105,7 +105,7 @@ export default function PatientProfilePage() {
             <Input id="address" label="Address" {...register('address')} error={errors.address?.message} disabled={!editing} />
           </div>
 
-          <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider pt-2">Emergency Contact</p>
+          <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider pt-2">Emergency Contact</p>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <Input id="emergencyContact" label="Contact Name" {...register('emergencyContact')} error={errors.emergencyContact?.message} disabled={!editing} />
             <Input id="emergencyPhone" label="Contact Phone" {...register('emergencyPhone')} error={errors.emergencyPhone?.message} disabled={!editing} />

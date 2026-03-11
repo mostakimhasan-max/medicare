@@ -20,7 +20,7 @@ export function Spinner({ size = 'md', className, label = 'Loading…' }: Spinne
     >
       <div
         className={cn(
-          'rounded-full border-slate-200 border-t-blue-600 animate-spin',
+          'rounded-full border-muted border-t-primary animate-spin',
           sizeClasses[size],
         )}
       />

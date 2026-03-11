@@ -31,28 +31,29 @@ export function Sidebar({ items, isOpen, onClose }: SidebarProps) {
 
       <aside
         className={cn(
-          'fixed inset-y-0 left-0 z-30 w-64 flex flex-col bg-slate-900 text-white',
+          'fixed inset-y-0 left-0 z-30 w-64 flex flex-col',
+          'bg-sidebar text-sidebar-foreground',
           'transition-transform duration-300 ease-in-out',
           'lg:relative lg:translate-x-0',
           isOpen ? 'translate-x-0' : '-translate-x-full',
         )}
       >
         {/* Logo */}
-        <div className="flex items-center justify-between px-5 py-4 border-b border-slate-700/60">
+        <div className="flex items-center justify-between px-5 py-4 border-b border-sidebar-border">
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-              <Activity size={16} className="text-white" />
+            <div className="w-8 h-8 bg-sidebar-primary rounded-lg flex items-center justify-center">
+              <Activity size={16} className="text-sidebar-primary-foreground" />
             </div>
             <div>
-              <span className="font-bold text-sm text-white block leading-tight">Medicare</span>
-              <span className="text-[10px] text-slate-400 uppercase tracking-wider">
+              <span className="font-bold text-sm text-sidebar-foreground block leading-tight">Medicare</span>
+              <span className="text-[10px] text-sidebar-foreground/50 uppercase tracking-wider">
                 Management System
               </span>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="lg:hidden p-1 rounded-md hover:bg-slate-800 text-slate-400"
+            className="lg:hidden p-1 rounded-md hover:bg-sidebar-accent text-sidebar-foreground/60"
             aria-label="Close sidebar"
           >
             <X size={16} />
@@ -76,8 +77,8 @@ export function Sidebar({ items, isOpen, onClose }: SidebarProps) {
                   'flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium',
                   'transition-colors group',
                   isActive
-                    ? 'bg-blue-600 text-white shadow-sm'
-                    : 'text-slate-400 hover:bg-slate-800 hover:text-white',
+                    ? 'bg-sidebar-primary text-sidebar-primary-foreground shadow-sm'
+                    : 'text-sidebar-foreground/70 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground',
                 )}
                 aria-current={isActive ? 'page' : undefined}
               >
@@ -85,7 +86,7 @@ export function Sidebar({ items, isOpen, onClose }: SidebarProps) {
                   size={17}
                   className={cn(
                     'flex-shrink-0 transition-colors',
-                    isActive ? 'text-white' : 'text-slate-500 group-hover:text-slate-300',
+                    isActive ? 'text-sidebar-primary-foreground' : 'text-sidebar-foreground/50 group-hover:text-sidebar-accent-foreground',
                   )}
                 />
                 <span className="flex-1">{item.label}</span>
@@ -101,12 +102,12 @@ export function Sidebar({ items, isOpen, onClose }: SidebarProps) {
 
         {/* User footer */}
         {user && (
-          <div className="px-4 py-4 border-t border-slate-700/60">
+          <div className="px-4 py-4 border-t border-sidebar-border">
             <div className="flex items-center gap-3 min-w-0">
               <Avatar name={user.name} size="sm" className="flex-shrink-0" />
               <div className="flex-1 min-w-0">
-                <p className="text-sm font-medium text-white truncate">{user.name}</p>
-                <p className="text-xs text-slate-400 truncate">{user.role}</p>
+                <p className="text-sm font-medium text-sidebar-foreground truncate">{user.name}</p>
+                <p className="text-xs text-sidebar-foreground/50 truncate">{user.role}</p>
               </div>
             </div>
           </div>

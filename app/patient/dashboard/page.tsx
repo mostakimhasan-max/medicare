@@ -33,12 +33,12 @@ export default function PatientDashboard() {
             <a href="/patient/appointments" className="text-xs text-blue-600 hover:underline">View all</a>
           </CardHeader>
           {upcomingAppts.length === 0 ? (
-            <p className="px-5 pb-5 text-sm text-slate-400">No upcoming appointments.</p>
+            <p className="px-5 pb-5 text-sm text-muted-foreground">No upcoming appointments.</p>
           ) : (
-            <div className="divide-y divide-slate-50">
+            <div className="divide-y divide-border/40">
               {upcomingAppts.map((a) => (
                 <div key={a.id} className="px-5 py-4 flex items-center gap-4">
-                  <div className="w-12 h-12 bg-blue-50 rounded-xl flex flex-col items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 bg-blue-50 dark:bg-blue-950/50 rounded-xl flex flex-col items-center justify-center flex-shrink-0">
                     <span className="text-base font-bold text-blue-600">
                       {new Date(a.date).getDate()}
                     </span>
@@ -47,9 +47,9 @@ export default function PatientDashboard() {
                     </span>
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="font-semibold text-sm text-slate-800">{a.doctorName}</p>
-                    <p className="text-xs text-slate-500">{a.department} · {formatTime(a.time)}</p>
-                    <p className="text-xs text-slate-400 capitalize mt-0.5">{a.type.replace(/-/g, ' ')}</p>
+                    <p className="font-semibold text-sm text-foreground">{a.doctorName}</p>
+                    <p className="text-xs text-muted-foreground">{a.department} · {formatTime(a.time)}</p>
+                    <p className="text-xs text-muted-foreground capitalize mt-0.5">{a.type.replace(/-/g, ' ')}</p>
                   </div>
                   <StatusBadge status={a.status} />
                 </div>
@@ -65,21 +65,21 @@ export default function PatientDashboard() {
             <a href="/patient/prescriptions" className="text-xs text-blue-600 hover:underline">View all</a>
           </CardHeader>
           {myPrescriptions.length === 0 ? (
-            <p className="px-5 pb-5 text-sm text-slate-400">No prescriptions yet.</p>
+            <p className="px-5 pb-5 text-sm text-muted-foreground">No prescriptions yet.</p>
           ) : (
-            <div className="divide-y divide-slate-50">
+            <div className="divide-y divide-border/40">
               {myPrescriptions.map((rx) => (
                 <div key={rx.id} className="px-5 py-4">
                   <div className="flex items-center justify-between mb-2">
                     <div>
-                      <p className="font-semibold text-sm text-slate-800">{rx.diagnosis}</p>
-                      <p className="text-xs text-slate-500">{rx.doctorName} · {formatDate(rx.date)}</p>
+                      <p className="font-semibold text-sm text-foreground">{rx.diagnosis}</p>
+                      <p className="text-xs text-muted-foreground">{rx.doctorName} · {formatDate(rx.date)}</p>
                     </div>
                     <StatusBadge status={rx.status} />
                   </div>
                   <div className="flex flex-wrap gap-1.5">
                     {rx.medications.map((med, i) => (
-                      <span key={i} className="text-[10px] bg-slate-50 border border-slate-100 rounded-md px-1.5 py-0.5 text-slate-600">
+                      <span key={i} className="text-[10px] bg-muted/40 border border-border rounded-md px-1.5 py-0.5 text-muted-foreground">
                         {med.name} {med.dosage}
                       </span>
                     ))}
@@ -101,18 +101,18 @@ export default function PatientDashboard() {
           <div className="overflow-x-auto">
             <table className="min-w-full text-sm">
               <thead>
-                <tr className="border-y border-slate-100 bg-slate-50">
+                <tr className="border-y border-border bg-muted/40">
                   {['Invoice', 'Date', 'Due Date', 'Amount', 'Status'].map((h) => (
-                    <th key={h} className="px-5 py-2.5 text-left text-xs font-semibold text-slate-500 uppercase tracking-wide">{h}</th>
+                    <th key={h} className="px-5 py-2.5 text-left text-xs font-semibold text-muted-foreground uppercase tracking-wide">{h}</th>
                   ))}
                 </tr>
               </thead>
               <tbody>
                 {myBills.map((b) => (
-                  <tr key={b.id} className="border-b border-slate-50 last:border-0 hover:bg-slate-50">
+                  <tr key={b.id} className="border-b border-border/40 last:border-0 hover:bg-muted/40">
                     <td className="px-5 py-3 font-mono text-xs">#{b.id.toUpperCase()}</td>
-                    <td className="px-5 py-3 text-xs text-slate-500">{formatDate(b.date)}</td>
-                    <td className="px-5 py-3 text-xs text-slate-500">{formatDate(b.dueDate)}</td>
+                    <td className="px-5 py-3 text-xs text-muted-foreground">{formatDate(b.date)}</td>
+                    <td className="px-5 py-3 text-xs text-muted-foreground">{formatDate(b.dueDate)}</td>
                     <td className="px-5 py-3 font-semibold">{formatCurrency(b.total)}</td>
                     <td className="px-5 py-3"><StatusBadge status={b.status} /></td>
                   </tr>

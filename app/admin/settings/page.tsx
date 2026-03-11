@@ -31,7 +31,7 @@ const SETTINGS_GROUPS: SettingsGroup[] = [
 export default function AdminSettingsPage() {
   return (
     <div className="space-y-4 max-w-2xl">
-      <p className="text-sm text-slate-500">
+      <p className="text-sm text-muted-foreground">
         Configure system-wide settings. Changes take effect immediately.
       </p>
 
@@ -39,9 +39,9 @@ export default function AdminSettingsPage() {
         {SETTINGS_GROUPS.map((group) => (
           <Card
             key={group.id}
-            className="flex items-center gap-4 cursor-pointer hover:border-blue-200 hover:shadow-md transition-all group"
+            className="flex items-center gap-4 cursor-pointer hover:border-primary/50 hover:shadow-md transition-all group"
           >
-            <div className="w-10 h-10 bg-slate-100 rounded-xl flex items-center justify-center text-slate-600 group-hover:bg-blue-50 group-hover:text-blue-600 transition-colors flex-shrink-0">
+            <div className="w-10 h-10 bg-muted rounded-xl flex items-center justify-center text-muted-foreground group-hover:bg-primary/10 group-hover:text-primary transition-colors flex-shrink-0">
               {group.icon}
             </div>
             <div className="flex-1 min-w-0">
@@ -53,9 +53,9 @@ export default function AdminSettingsPage() {
                   </Badge>
                 )}
               </div>
-              <p className="text-xs text-slate-500 mt-0.5">{group.description}</p>
+              <p className="text-xs text-muted-foreground mt-0.5">{group.description}</p>
             </div>
-            <span className="text-slate-300 group-hover:text-blue-400 text-lg">›</span>
+            <span className="text-muted-foreground group-hover:text-primary text-lg">›</span>
           </Card>
         ))}
       </div>

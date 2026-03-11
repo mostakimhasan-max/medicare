@@ -20,8 +20,8 @@ const columns: Column<Staff>[] = [
       <div className="flex items-center gap-3">
         <Avatar name={row.name} size="sm" />
         <div>
-          <p className="font-medium text-slate-800">{row.name}</p>
-          <p className="text-xs text-slate-500">{row.email}</p>
+          <p className="font-medium text-foreground">{row.name}</p>
+          <p className="text-xs text-muted-foreground">{row.email}</p>
         </div>
       </div>
     ),
@@ -32,7 +32,7 @@ const columns: Column<Staff>[] = [
   {
     key: 'joinDate',
     header: 'Joined',
-    render: (r) => <span className="text-xs text-slate-500">{formatDate(r.joinDate)}</span>,
+    render: (r) => <span className="text-xs text-muted-foreground">{formatDate(r.joinDate)}</span>,
   },
   { key: 'status', header: 'Status', render: (r) => <StatusBadge status={r.status} /> },
 ];

@@ -13,7 +13,7 @@ import { StatsCard } from '@/components/layout/StatsCard';
 import { DollarSign, TrendingUp, AlertCircle, CheckCircle } from 'lucide-react';
 
 const columns: Column<Bill>[] = [
-  { key: 'id', header: 'Bill #', render: (r) => <span className="font-mono text-xs text-slate-500">#{r.id.toUpperCase()}</span> },
+  { key: 'id', header: 'Bill #', render: (r) => <span className="font-mono text-xs text-muted-foreground">#{r.id.toUpperCase()}</span> },
   { key: 'patientName', header: 'Patient', sortable: true },
   {
     key: 'date',
@@ -31,14 +31,14 @@ const columns: Column<Bill>[] = [
     header: 'Amount',
     sortable: true,
     render: (r) => (
-      <span className="font-semibold text-slate-800">{formatCurrency(r.total)}</span>
+      <span className="font-semibold text-foreground">{formatCurrency(r.total)}</span>
     ),
   },
   {
     key: 'paymentMethod',
     header: 'Payment',
     render: (r) => (
-      <span className="text-xs capitalize text-slate-500">{r.paymentMethod ?? '—'}</span>
+      <span className="text-xs capitalize text-muted-foreground">{r.paymentMethod ?? '—'}</span>
     ),
   },
   {

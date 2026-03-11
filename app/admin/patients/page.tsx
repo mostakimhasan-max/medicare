@@ -22,8 +22,8 @@ const columns: Column<Patient>[] = [
       <div className="flex items-center gap-3">
         <Avatar name={row.name} size="sm" />
         <div>
-          <p className="font-medium text-slate-800">{row.name}</p>
-          <p className="text-xs text-slate-500">{row.email}</p>
+          <p className="font-medium text-foreground">{row.name}</p>
+          <p className="text-xs text-muted-foreground">{row.email}</p>
         </div>
       </div>
     ),
@@ -33,24 +33,24 @@ const columns: Column<Patient>[] = [
     header: 'Age / Gender',
     render: (row) => (
       <div>
-        <p className="text-slate-700">{calculateAge(row.dateOfBirth)} yrs</p>
-        <p className="text-xs text-slate-400 capitalize">{row.gender}</p>
+        <p className="text-foreground">{calculateAge(row.dateOfBirth)} yrs</p>
+        <p className="text-xs text-muted-foreground capitalize">{row.gender}</p>
       </div>
     ),
   },
   { key: 'bloodGroup', header: 'Blood Group' },
-  { key: 'phone', header: 'Phone', render: (row) => <span className="text-slate-600 font-mono text-xs">{row.phone}</span> },
+  { key: 'phone', header: 'Phone', render: (row) => <span className="text-muted-foreground font-mono text-xs">{row.phone}</span> },
   {
     key: 'assignedDoctorName',
     header: 'Assigned Doctor',
     render: (row) => (
-      <span className="text-slate-600 text-xs">{row.assignedDoctorName ?? '—'}</span>
+      <span className="text-muted-foreground text-xs">{row.assignedDoctorName ?? '—'}</span>
     ),
   },
   {
     key: 'registrationDate',
     header: 'Registered',
-    render: (row) => <span className="text-slate-500 text-xs">{formatDate(row.registrationDate)}</span>,
+    render: (row) => <span className="text-muted-foreground text-xs">{formatDate(row.registrationDate)}</span>,
   },
   {
     key: 'status',

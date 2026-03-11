@@ -13,7 +13,7 @@ export default function PatientPrescriptionsPage() {
   return (
     <div className="space-y-4">
       {myPrescriptions.length === 0 && (
-        <div className="text-center py-16 text-slate-400">No prescriptions found.</div>
+        <div className="text-center py-16 text-muted-foreground">No prescriptions found.</div>
       )}
       {myPrescriptions.map((rx) => (
         <Card key={rx.id}>
@@ -23,7 +23,7 @@ export default function PatientPrescriptionsPage() {
                 <Avatar name={rx.doctorName} size="md" />
                 <div>
                   <CardTitle className="text-base">{rx.doctorName}</CardTitle>
-                  <p className="text-xs text-slate-400">{rx.diagnosis}</p>
+                  <p className="text-xs text-muted-foreground">{rx.diagnosis}</p>
                 </div>
               </div>
               <StatusBadge status={rx.status} />
@@ -32,14 +32,14 @@ export default function PatientPrescriptionsPage() {
           <div className="px-4 pb-4 space-y-3">
             <div className="flex flex-wrap gap-2">
               {rx.medications.map((med, i) => (
-                <span key={i} className="inline-flex items-center gap-1.5 rounded-full bg-blue-50 px-3 py-1 text-xs font-medium text-blue-700">
+                <span key={i} className="inline-flex items-center gap-1.5 rounded-full bg-blue-50 dark:bg-blue-950/50 px-3 py-1 text-xs font-medium text-blue-700 dark:text-blue-300">
                   <Pill size={11} />
                   {med.name} {med.dosage} — {med.frequency} × {med.duration}
                 </span>
               ))}
             </div>
-            {rx.notes && <p className="text-xs text-slate-500 italic">"{rx.notes}"</p>}
-            <div className="flex items-center gap-4 text-xs text-slate-400">
+            {rx.notes && <p className="text-xs text-muted-foreground italic">"{rx.notes}"</p>}
+            <div className="flex items-center gap-4 text-xs text-muted-foreground">
               <span>Issued: {formatDate(rx.date)}</span>
               {rx.followUpDate && (
                 <span className="flex items-center gap-1">

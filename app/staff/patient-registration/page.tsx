@@ -51,8 +51,8 @@ export default function PatientRegistrationPage() {
         <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center">
           <CheckCircle size={36} className="text-green-600" />
         </div>
-        <h2 className="text-xl font-bold text-slate-900">Patient Registered!</h2>
-        <p className="text-slate-500 text-sm">Patient ID: <span className="font-mono font-bold">{patientId}</span></p>
+        <h2 className="text-xl font-bold text-foreground">Patient Registered!</h2>
+        <p className="text-muted-foreground text-sm">Patient ID: <span className="font-mono font-bold">{patientId}</span></p>
         <div className="flex gap-3 mt-2">
           <Button variant="outline" onClick={() => { setRegistered(false); reset(); }}>
             Register Another
@@ -65,8 +65,8 @@ export default function PatientRegistrationPage() {
     );
   }
 
-  const fieldClass = 'h-9 rounded-lg border border-slate-300 text-sm px-3 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full';
-  const labelClass = 'text-sm font-medium text-slate-700';
+  const fieldClass = 'h-9 rounded-lg border border-input bg-background text-foreground text-sm px-3 focus:outline-none focus:ring-2 focus:ring-ring w-full';
+  const labelClass = 'text-sm font-medium text-foreground';
   const errClass = 'text-xs text-red-600 mt-0.5';
 
   return (

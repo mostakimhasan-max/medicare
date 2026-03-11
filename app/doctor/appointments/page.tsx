@@ -30,7 +30,7 @@ const columns: Column<Appointment>[] = [
     render: (row) => (
       <div>
         <p>{formatDate(row.date)}</p>
-        <p className="text-xs text-slate-400">{formatTime(row.time)} · {row.duration}min</p>
+        <p className="text-xs text-muted-foreground">{formatTime(row.time)} · {row.duration}min</p>
       </div>
     ),
   },
@@ -47,7 +47,7 @@ const columns: Column<Appointment>[] = [
             appointmentService.updateStatus(row.id, 'completed');
             notify.success('Appointment marked as completed');
           }}
-          className="p-1.5 rounded-lg hover:bg-green-50 text-green-600"
+          className="p-1.5 rounded-lg hover:bg-green-50 dark:hover:bg-green-950/50 text-green-600"
           title="Mark completed"
         >
           <CheckCircle size={16} />
@@ -57,7 +57,7 @@ const columns: Column<Appointment>[] = [
             appointmentService.updateStatus(row.id, 'cancelled');
             notify.info('Appointment cancelled');
           }}
-          className="p-1.5 rounded-lg hover:bg-red-50 text-red-500"
+          className="p-1.5 rounded-lg hover:bg-red-50 dark:hover:bg-red-950/50 text-red-500"
           title="Cancel"
         >
           <XCircle size={16} />

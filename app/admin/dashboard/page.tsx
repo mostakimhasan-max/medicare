@@ -66,11 +66,11 @@ export default function AdminDashboard() {
           <div className="overflow-x-auto">
             <table className="min-w-full text-sm mt-4">
               <thead>
-                <tr className="border-y border-slate-100 bg-slate-50">
+                <tr className="border-y border-border bg-muted/40">
                   {['Patient', 'Doctor', 'Date', 'Type', 'Status'].map((h) => (
                     <th
                       key={h}
-                      className="px-5 py-2.5 text-left text-xs font-semibold text-slate-500 uppercase tracking-wide"
+                      className="px-5 py-2.5 text-left text-xs font-semibold text-muted-foreground uppercase tracking-wide"
                     >
                       {h}
                     </th>
@@ -81,20 +81,20 @@ export default function AdminDashboard() {
                 {recentAppointments.map((appt) => (
                   <tr
                     key={appt.id}
-                    className="border-b border-slate-50 last:border-0 hover:bg-slate-50"
+                    className="border-b border-border/40 last:border-0 hover:bg-muted/40"
                   >
                     <td className="px-5 py-3">
                       <div className="flex items-center gap-2">
                         <Avatar name={appt.patientName} size="xs" />
-                        <span className="font-medium text-slate-800">{appt.patientName}</span>
+                        <span className="font-medium text-foreground">{appt.patientName}</span>
                       </div>
                     </td>
-                    <td className="px-5 py-3 text-slate-600">{appt.doctorName}</td>
-                    <td className="px-5 py-3 text-slate-500 text-xs">
+                    <td className="px-5 py-3 text-muted-foreground">{appt.doctorName}</td>
+                    <td className="px-5 py-3 text-muted-foreground text-xs">
                       {formatDate(appt.date)}<br />
-                      <span className="text-slate-400">{formatTime(appt.time)}</span>
+                      <span className="text-muted-foreground">{formatTime(appt.time)}</span>
                     </td>
-                    <td className="px-5 py-3 text-slate-600 capitalize">
+                    <td className="px-5 py-3 text-muted-foreground capitalize">
                       {appt.type.replace(/-/g, ' ')}
                     </td>
                     <td className="px-5 py-3">
@@ -111,22 +111,22 @@ export default function AdminDashboard() {
         <Card className="py-0 gap-0">
           <CardHeader className="px-5 pt-5 pb-0 mb-0">
             <CardTitle>Top Doctors</CardTitle>
-            <TrendingUp size={16} className="text-slate-400" />
+            <TrendingUp size={16} className="text-muted-foreground" />
           </CardHeader>
           <div className="px-5 pt-4 pb-5 space-y-4">
             {MOCK_DOCTORS.filter((d) => d.status === 'active').map((doc, i) => (
               <div key={doc.id} className="flex items-center gap-3">
-                <span className="text-xs font-bold text-slate-400 w-4">{i + 1}</span>
+                <span className="text-xs font-bold text-muted-foreground w-4">{i + 1}</span>
                 <Avatar name={doc.name} size="sm" />
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium text-slate-800 truncate">{doc.name}</p>
-                  <p className="text-xs text-slate-500">{doc.specialization}</p>
+                  <p className="text-sm font-medium text-foreground truncate">{doc.name}</p>
+                  <p className="text-xs text-muted-foreground">{doc.specialization}</p>
                 </div>
                 <div className="text-right flex-shrink-0">
-                  <p className="text-sm font-semibold text-slate-800">
+                  <p className="text-sm font-semibold text-foreground">
                     {doc.totalPatients}
                   </p>
-                  <p className="text-[10px] text-slate-400">patients</p>
+                  <p className="text-[10px] text-muted-foreground">patients</p>
                 </div>
               </div>
             ))}
@@ -137,30 +137,30 @@ export default function AdminDashboard() {
       {/* Quick stats row */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <Card className="flex items-center gap-4">
-          <div className="w-12 h-12 bg-rose-50 rounded-xl flex items-center justify-center flex-shrink-0">
+          <div className="w-12 h-12 bg-rose-50 dark:bg-rose-950/50 rounded-xl flex items-center justify-center flex-shrink-0">
             <ClipboardList size={22} className="text-rose-500" />
           </div>
           <div>
-            <p className="text-2xl font-bold text-slate-900">156</p>
-            <p className="text-sm text-slate-500">Prescriptions This Week</p>
+            <p className="text-2xl font-bold text-foreground">156</p>
+            <p className="text-sm text-muted-foreground">Prescriptions This Week</p>
           </div>
         </Card>
         <Card className="flex items-center gap-4">
-          <div className="w-12 h-12 bg-cyan-50 rounded-xl flex items-center justify-center flex-shrink-0">
+          <div className="w-12 h-12 bg-cyan-50 dark:bg-cyan-950/50 rounded-xl flex items-center justify-center flex-shrink-0">
             <DollarSign size={22} className="text-cyan-600" />
           </div>
           <div>
-            <p className="text-2xl font-bold text-slate-900">23</p>
-            <p className="text-sm text-slate-500">Pending Bills</p>
+            <p className="text-2xl font-bold text-foreground">23</p>
+            <p className="text-sm text-muted-foreground">Pending Bills</p>
           </div>
         </Card>
         <Card className="flex items-center gap-4">
-          <div className="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center flex-shrink-0">
+          <div className="w-12 h-12 bg-orange-50 dark:bg-orange-950/50 rounded-xl flex items-center justify-center flex-shrink-0">
             <Users size={22} className="text-orange-500" />
           </div>
           <div>
-            <p className="text-2xl font-bold text-slate-900">12</p>
-            <p className="text-sm text-slate-500">New Registrations Today</p>
+            <p className="text-2xl font-bold text-foreground">12</p>
+            <p className="text-sm text-muted-foreground">New Registrations Today</p>
           </div>
         </Card>
       </div>

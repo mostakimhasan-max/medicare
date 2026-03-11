@@ -17,8 +17,8 @@ const columns: Column<Patient>[] = [
       <div className="flex items-center gap-3">
         <Avatar name={row.name} size="sm" />
         <div>
-          <p className="font-medium text-slate-800">{row.name}</p>
-          <p className="text-xs text-slate-400">{row.phone}</p>
+          <p className="font-medium text-foreground">{row.name}</p>
+          <p className="text-xs text-muted-foreground">{row.phone}</p>
         </div>
       </div>
     ),
@@ -33,7 +33,7 @@ const columns: Column<Patient>[] = [
   {
     key: 'registrationDate',
     header: 'Since',
-    render: (r) => <span className="text-xs text-slate-500">{formatDate(r.registrationDate)}</span>,
+    render: (r) => <span className="text-xs text-muted-foreground">{formatDate(r.registrationDate)}</span>,
   },
   { key: 'status', header: 'Status', render: (r) => <StatusBadge status={r.status} /> },
 ];

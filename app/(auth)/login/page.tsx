@@ -18,10 +18,10 @@ const loginSchema = z.object({
 type LoginForm = z.infer<typeof loginSchema>;
 
 const DEMO_USERS = [
-  { role: 'Admin', email: 'admin@medicare.com', badge: 'bg-purple-100 text-purple-700' },
-  { role: 'Doctor', email: 'doctor@medicare.com', badge: 'bg-blue-100 text-blue-700' },
-  { role: 'Staff', email: 'staff@medicare.com', badge: 'bg-amber-100 text-amber-700' },
-  { role: 'Patient', email: 'patient@medicare.com', badge: 'bg-green-100 text-green-700' },
+  { role: 'Admin', email: 'admin@medicare.com', badge: 'bg-purple-100 text-purple-700 dark:bg-purple-950/60 dark:text-purple-300' },
+  { role: 'Doctor', email: 'doctor@medicare.com', badge: 'bg-blue-100 text-blue-700 dark:bg-blue-950/60 dark:text-blue-300' },
+  { role: 'Staff', email: 'staff@medicare.com', badge: 'bg-amber-100 text-amber-700 dark:bg-amber-950/60 dark:text-amber-300' },
+  { role: 'Patient', email: 'patient@medicare.com', badge: 'bg-green-100 text-green-700 dark:bg-green-950/60 dark:text-green-300' },
 ];
 
 export default function LoginPage() {
@@ -88,27 +88,27 @@ export default function LoginPage() {
       </div>
 
       {/* Right panel — form */}
-      <div className="flex-1 flex items-center justify-center p-6 bg-slate-50">
+      <div className="flex-1 flex items-center justify-center p-6 bg-background">
         <div className="w-full max-w-md">
           {/* Mobile logo */}
           <div className="flex items-center gap-2 mb-8 lg:hidden">
             <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
               <Activity size={16} className="text-white" />
             </div>
-            <span className="font-bold text-slate-900">Medicare</span>
+            <span className="font-bold text-foreground">Medicare</span>
           </div>
 
-          <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-8">
+          <div className="bg-card rounded-2xl shadow-sm border border-border p-8">
             <div className="mb-7">
-              <h2 className="text-2xl font-bold text-slate-900">Welcome back</h2>
-              <p className="text-slate-500 text-sm mt-1">
+              <h2 className="text-2xl font-bold text-card-foreground">Welcome back</h2>
+              <p className="text-muted-foreground text-sm mt-1">
                 Sign in to access your dashboard
               </p>
             </div>
 
             {/* Server error */}
             {serverError && (
-              <div className="mb-5 flex items-start gap-3 p-3.5 bg-red-50 border border-red-200 rounded-xl text-sm text-red-700">
+              <div className="mb-5 flex items-start gap-3 p-3.5 bg-red-50 border border-red-200 rounded-xl text-sm text-red-700 dark:bg-red-950/50 dark:border-red-800 dark:text-red-300">
                 <span className="mt-0.5">⚠</span>
                 {serverError}
               </div>
@@ -117,13 +117,13 @@ export default function LoginPage() {
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4" noValidate>
               {/* Email */}
               <div className="flex flex-col gap-1">
-                <label className="text-sm font-medium text-slate-700" htmlFor="email">
+                <label className="text-sm font-medium text-foreground" htmlFor="email">
                   Email address
                 </label>
                 <div className="relative">
                   <Mail
                     size={16}
-                    className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none"
+                    className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground pointer-events-none"
                   />
                   <input
                     {...register('email')}
@@ -131,7 +131,7 @@ export default function LoginPage() {
                     type="email"
                     placeholder="you@medicare.com"
                     autoComplete="email"
-                    className="w-full h-10 pl-9 pr-3 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                    className="w-full h-10 pl-9 pr-3 border border-input bg-background text-foreground rounded-lg text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition-colors"
                   />
                 </div>
                 {errors.email && (
@@ -141,13 +141,13 @@ export default function LoginPage() {
 
               {/* Password */}
               <div className="flex flex-col gap-1">
-                <label className="text-sm font-medium text-slate-700" htmlFor="password">
+                <label className="text-sm font-medium text-foreground" htmlFor="password">
                   Password
                 </label>
                 <div className="relative">
                   <Lock
                     size={16}
-                    className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none"
+                    className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground pointer-events-none"
                   />
                   <input
                     {...register('password')}
@@ -155,12 +155,12 @@ export default function LoginPage() {
                     type={showPassword ? 'text' : 'password'}
                     placeholder="••••••••"
                     autoComplete="current-password"
-                    className="w-full h-10 pl-9 pr-10 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                    className="w-full h-10 pl-9 pr-10 border border-input bg-background text-foreground rounded-lg text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition-colors"
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword((v) => !v)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
                     aria-label={showPassword ? 'Hide password' : 'Show password'}
                   >
                     {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
@@ -175,15 +175,15 @@ export default function LoginPage() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full h-10 bg-blue-600 text-white rounded-lg text-sm font-semibold hover:bg-blue-700 active:bg-blue-800 transition-colors disabled:opacity-60 disabled:cursor-not-allowed mt-2"
+                className="w-full h-10 bg-primary text-primary-foreground rounded-lg text-sm font-semibold hover:bg-primary/90 active:bg-primary/80 transition-colors disabled:opacity-60 disabled:cursor-not-allowed mt-2"
               >
                 {isSubmitting ? 'Signing in…' : 'Sign In'}
               </button>
             </form>
 
             {/* Demo quick-fill */}
-            <div className="mt-7 pt-6 border-t border-slate-100">
-              <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">
+            <div className="mt-7 pt-6 border-t border-border">
+              <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">
                 Demo accounts — click to fill
               </p>
               <div className="grid grid-cols-2 gap-2">
@@ -195,16 +195,16 @@ export default function LoginPage() {
                       setValue('email', email);
                       setValue('password', 'password123');
                     }}
-                    className="flex items-center gap-2 px-3 py-2.5 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-xl text-left text-xs transition-colors"
+                    className="flex items-center gap-2 px-3 py-2.5 bg-muted hover:bg-accent border border-border rounded-xl text-left text-xs transition-colors"
                   >
                     <span className={`px-1.5 py-0.5 rounded-md text-[10px] font-bold ${badge}`}>
                       {role}
                     </span>
-                    <span className="text-slate-500 truncate">{email}</span>
+                    <span className="text-muted-foreground truncate">{email}</span>
                   </button>
                 ))}
               </div>
-              <p className="text-center text-[11px] text-slate-400 mt-3">
+              <p className="text-center text-[11px] text-muted-foreground mt-3">
                 Password: <span className="font-mono font-medium">password123</span>
               </p>
             </div>

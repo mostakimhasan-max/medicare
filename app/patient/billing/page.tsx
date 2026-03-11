@@ -13,17 +13,17 @@ export default function PatientBillingPage() {
   return (
     <div className="space-y-4">
       {myBills.length === 0 && (
-        <div className="text-center py-16 text-slate-400">No billing records found.</div>
+        <div className="text-center py-16 text-muted-foreground">No billing records found.</div>
       )}
       {myBills.map((bill) => (
         <Card key={bill.id} className="p-4">
           <div className="flex items-center justify-between gap-4 flex-wrap">
             <div className="space-y-1">
-              <p className="font-semibold text-slate-800">Invoice #{bill.id.toUpperCase()}</p>
-              <p className="text-xs text-slate-400">Date: {formatDate(bill.date)} · Due: {formatDate(bill.dueDate)}</p>
+              <p className="font-semibold text-foreground">Invoice #{bill.id.toUpperCase()}</p>
+              <p className="text-xs text-muted-foreground">Date: {formatDate(bill.date)} · Due: {formatDate(bill.dueDate)}</p>
             </div>
             <div className="flex items-center gap-3">
-              <p className="text-lg font-bold text-slate-800">{formatCurrency(bill.total)}</p>
+              <p className="text-lg font-bold text-foreground">{formatCurrency(bill.total)}</p>
               <StatusBadge status={bill.status} />
             </div>
           </div>
@@ -31,7 +31,7 @@ export default function PatientBillingPage() {
           {/* Line items */}
           <div className="mt-3 space-y-1">
             {bill.items.map((item, i) => (
-              <div key={i} className="flex justify-between text-xs text-slate-500">
+              <div key={i} className="flex justify-between text-xs text-muted-foreground">
                 <span>{item.description} × {item.quantity}</span>
                 <span>{formatCurrency(item.total)}</span>
               </div>
@@ -42,13 +42,13 @@ export default function PatientBillingPage() {
                 <span>-{formatCurrency(bill.discount)}</span>
               </div>
             )}
-            <div className="flex justify-between text-xs text-slate-400 pt-1 border-t border-slate-100">
+            <div className="flex justify-between text-xs text-muted-foreground pt-1 border-t border-border">
               <span>Tax</span>
               <span>{formatCurrency(bill.tax)}</span>
             </div>
           </div>
 
-          <div className="mt-4 pt-3 border-t border-slate-100 flex gap-2 justify-end">
+          <div className="mt-4 pt-3 border-t border-border flex gap-2 justify-end">
             <Button variant="outline" size="sm" leftIcon={<Download size={14} />}>
               Download
             </Button>
